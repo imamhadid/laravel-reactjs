@@ -1,0 +1,35 @@
+# Gunakan versi PHP dan Apache yang sesuai dengan kebutuhan Laravel
+FROM php:8.0-apache
+
+# Instal ekstensi PHP dan alat yang diperlukan
+RUN docker-php-ext-install pdo_mysql
+RUN apt-get update && apt-get install -y \
+    zlib1g-dev \
+    libzip-dev \
+    unzip
+RUN docker-php-ext-install zip
+RUN a2enmod rewrite
+
+# Konfigurasi Apache untuk mengarahkan ke direktori /var/www/html/public
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Install Composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php composer-setup.php
+RUN mv composer.phar /usr/local/bin/composer
+RUN php -r "unlink('composer-setup.php');"
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Salin dan instal dependensi proyek Laravel
+COPY . /var/www/html
+
+# Port yang akan diexpose
+EXPOSE 80
+
+# Perintah yang akan dijalankan saat container dimulai
+CMD ["apache2-foreground"]

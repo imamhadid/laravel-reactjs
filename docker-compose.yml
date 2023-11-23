@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  laravel-app:
+    build:
+      context: ./laravel 
+    container_name: laravel-app
+    volumes:
+      - ./laravel:/var/www/html
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:5.7
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: laravel_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: laravel_password
+    ports:
+      - "3306:3306"
+
+  react-app:
+    build:
+      context: ./react-app 
+    container_name: react-app
+    volumes:
+      - ./react-app:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - laravel-app
