@@ -11,7 +11,7 @@ Laravel can be used only as a backend-api and for ReactJS it can be used as a fr
 just run and ez too use
 
 
-# Using For Develop Mode
+## Using For Develop Mode
 
 run docker compose
 `docker compose start laravel-reactjs` or run from docker desktop or docker vscode/jetbean
@@ -32,7 +32,9 @@ run docker compose
 
     1. already run serve
 
-# Backend Test (Swagger Documentation)
+    1. open browser `localhost:3000`
+
+## Backend Test (Swagger Documentation)
 
 
 list documentation api `http://localhost:8000/api/documentation`
