@@ -1,9 +1,15 @@
-version: '3'
+version: "3"
+
+networks:
+  laravel-net:
+    driver: bridge
 
 services:
   laravel-app:
+    networks:
+      - laravel-net
     build:
-      context: ./laravel 
+      context: ./laravel
     container_name: laravel-app
     volumes:
       - ./laravel:/var/www/html
@@ -13,6 +19,8 @@ services:
       - mysql-db
 
   mysql-db:
+    networks:
+      - laravel-net
     image: mysql:5.7
     container_name: mysql-db
     restart: always
@@ -25,8 +33,10 @@ services:
       - "3306:3306"
 
   react-app:
+    networks:
+      - laravel-net
     build:
-      context: ./react-app 
+      context: ./react-app
     container_name: react-app
     volumes:
       - ./react-app:/usr/src/app
