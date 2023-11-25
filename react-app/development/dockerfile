@@ -1,0 +1,17 @@
+# Gunakan versi Node.js yang sesuai dengan kebutuhan ReactJS
+FROM node:18
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Salin dan instal dependensi proyek ReactJS
+COPY package*.json ./
+
+# Salin sumber daya proyek ReactJS
+COPY . .
+
+# Port yang akan diexpose
+EXPOSE 3000
+
+# Perintah yang akan dijalankan saat container dimulai
+CMD ["npm", "start"]

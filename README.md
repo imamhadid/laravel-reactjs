@@ -1,7 +1,11 @@
-# Laravel 9.0 (PHP) & Reactjs (Typescript) 18.2 Docker Compose
+# Laravel 9.0 (PHP), Reactjs (Typescript) 18.2 & MySQL With Docker Compose
 
 The following are separate packages between Laravel and ReactJS that run in each env
 Laravel can be used only as a backend-api and for ReactJS it can be used as a frontend, using MySQL as the data base.
+
+Reactjs Port 3000
+
+Laravel Port 8000
 
 # Installation
 
@@ -18,21 +22,19 @@ run docker compose
 
 1. Laravel
 
-    1. go to terminal docker laravel `docker exec -it laravel-app /bin/bash`
+    - go to terminal docker laravel `docker exec -it laravel-app /bin/bash`
 
-    1. create env at folder laravel `cp .env.example .env`
+    - run key artisan `php artisan key:generate`
 
-    1. run key artisan `php artisan key:generate`
+    - run migrate artisan `php artisan migrate`
 
-    1. run migrate artisan `php artisan migrate`
-
-    1. run serve artisan `php artisan serve`
+    - run serve artisan `php artisan serve`
 
 1. Reactjs
 
-    1. already run serve
+    - already run serve
 
-    1. open browser `localhost:3000`
+    - open browser `localhost:3000`
 
 ## Backend Test (Swagger Documentation)
 
@@ -44,4 +46,23 @@ this swagger using [L5-Swagger](https://github.com/DarkaOnLine/L5-Swagger)
 read example api for detail [here](https://github.com/zircote/swagger-php/tree/master/Examples/petstore-3.0)
 
 
-Support Me [Buy Coffe](https://sociabuzz.com/hadit120/tribe)
+## Build
+
+u just need connect ur vps or server to docker repo and run it
+
+1. Reactjs
+
+    - change dockerfile at root project with at `/production` folder
+
+1. push to ur server
+
+1. run docker compose
+
+    `docker compose -f "docker-compose.yml" up -d --build `
+
+1. now u can use port forwarding or nginx-proxy-manager to config ur port backend and frontend
+
+[read this for setup to server](https://github.com/NginxProxyManager/nginx-proxy-manager)
+
+
+Support Me For Coffe [sociabuzz](https://sociabuzz.com/hadit120/tribe) or [buymeacoffee](https://www.buymeacoffee.com/had12)

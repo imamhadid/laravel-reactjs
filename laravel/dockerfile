@@ -28,6 +28,8 @@ WORKDIR /var/www/html
 # Salin dan instal dependensi proyek Laravel
 COPY . /var/www/html
 
+RUN cp .env.example .env
+
 # Port yang akan diexpose
 EXPOSE 80
 
