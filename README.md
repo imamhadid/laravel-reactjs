@@ -7,6 +7,17 @@ Reactjs Port 3000
 
 Laravel Port 8000
 
+# Sample Run
+
+1. frontend [link](http://103.127.96.143:3000/)
+
+<img src="./assets/images/1.png" width="250">
+
+1. backend swagger api doc [link](http://103.127.96.143:8000/api/documentation)
+
+<img src="./assets/images/2.png" width="250">
+
+
 # Installation
 
 1.  install [docker](https://docs.docker.com/engine/) & [docker-compose v3](https://docs.docker.com/compose/compose-file/compose-file-v3/) or [docker desktop](https://www.docker.com/get-started/)
@@ -23,6 +34,10 @@ run docker compose
 1. Laravel
 
     - go to terminal docker laravel `docker exec -it laravel-app /bin/bash`
+
+    - run key artisan `composer install`
+
+    - run key artisan `cp .env.example .env`
 
     - run key artisan `php artisan key:generate`
 
@@ -48,7 +63,7 @@ read example api for detail [here](https://github.com/zircote/swagger-php/tree/m
 
 ## Build
 
-u just need connect ur vps or server to docker repo and run it
+you need connect ur vps or server to docker repo and run it
 
 1. Reactjs
 
