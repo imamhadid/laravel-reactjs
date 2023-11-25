@@ -7,7 +7,7 @@ Reactjs Port 3000
 
 Laravel Port 8000
 
-# Sample Run
+## Sample Run
 
 1. frontend [link](http://103.127.96.143:3000/)
 
@@ -16,6 +16,32 @@ Laravel Port 8000
 1. backend swagger api doc [link](http://103.127.96.143:8000/api/documentation)
 
 <img src="./assets/images/2.png" width="250">
+
+
+## dependencies
+
+1. Laravel (PHP)
+
+    - laravel
+
+    - laravel/sanctum `token auth`
+
+    - darkaonline/l5-swagger `backend api doc`
+
+1. Reactjs (Typescript)
+
+    - react
+
+    - react-dom `dom js`
+
+    - react-router-dom `routers`
+
+    - bootstrap `template style`
+
+    - axios `fetch api`
+
+    - fortawesome `free icon`
+
 
 
 # Installation
